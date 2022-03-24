@@ -1,0 +1,42 @@
+<div class="titre2">
+    <h1 style="text-align: left;"> Liste de tous les emplois</h1>
+    <div class="c-grid" style="margin-top: -50px; margin-left: 550px;">
+        <button [routerLink]="['/admindashboard/ajouteremploi']" type="button" class="btn btn-primary">Appuyez ici pour inserer un nouveau emploi</button>
+    </div>
+
+</div>
+<div class="tablo1">
+    <table id="scroll-horizontal-datatable" class="table mx-auto nowrap m-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>title</th>
+                <th>description</th>
+                <th>date&heure</th>
+                <th>idFormation</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of emplois;let ind = index">
+                <td>{{ind}}</td>
+                <td>{{i.title}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.date_heur}}</td>
+                <td> {{i.formation[0].title}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/admindashboard/modifieremploi', i._id]"
+                        class="btn btn-warning rounded-pill">Modifier</button>
+                    <button type="button" (click)="delete(i._id)" class="btn btn-danger rounded-pill">Supprimer</button>
+                </td>
+
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+
+</div>

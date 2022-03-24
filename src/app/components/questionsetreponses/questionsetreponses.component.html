@@ -1,0 +1,108 @@
+<!-- new post -->
+
+<h3 style=" color: gray;"> Accueil des Questions&Reponses</h3>
+<div class="card" style="border-style: groove ; border-color: transparent;  ">
+    
+    <div class="card-body p-0">
+        <ul class="nav nav-tabs nav-bordered">
+            <li class="nav-item">
+                <a href="#newpost" data-bs-toggle="tab" aria-expanded="false" class="nav-link active px-3 py-2">
+                    <i class="mdi mdi-pencil-box-multiple font-18 d-md-none d-block"></i>
+                    <span class="d-none d-md-block">Poser une question</span> <br>
+                    <input id="Titre-de-la-question"  style="width: 800px; margin-left: 150px;" type="text" class="form-control" [(ngModel)]="Questionnew.title" [ngModelOptions]="{standalone: true}" placeholder="Titre de la question">
+                </a>
+                
+            </li>
+        </ul> <!-- end nav-->
+        <div class="tab-content">
+            <div class="tab-pane show active p-3" id="newpost">
+                <!-- comment box -->
+                <div class="border rounded">
+                    <form action="#" class="comment-area-box">
+                        <textarea  [(ngModel)]="Questionnew.description" [ngModelOptions]="{standalone: true}" rows="4" class="form-control border-0 resize-none"
+                            placeholder="Description de la question...."></textarea>
+                        <div class="p-2 bg-light d-flex justify-content-between align-items-center">
+    
+                            <button style="margin-left: 800px;" (click)="ajouterquestion(Questionnew)" type="submit" class="btn btn-sm btn-primary"><i
+                                    class='uil uil-message me-1'></i>Créer</button>
+                        </div>
+                    </form>
+                </div> <!-- end .border-->
+                <!-- end comment box -->
+            </div> <!-- end preview-->
+        </div> <!-- end tab-content-->
+    </div>
+</div>
+<div style="width: 500px; margin-left: 400px;" >
+    
+    <input  type="text" placeholder="Recherche ..." (input)="filterItem($event.target.value)"
+        class="col-2 form-control form-control-sm" style="border-radius: 100px;border-color: gray;">
+</div>
+<br>
+<!-- end new post -->
+<!-- Question -->
+<div style="border-style: groove;border-color: transparent " *ngFor="let i of question | paginate: { itemsPerPage: 3, currentPage: p }">
+    <div class="card">
+        <div class="card-body pb-1">
+            <div class="d-flex">
+                <img class="me-2 rounded"[src]=" endpoint.url + 'getimage/' + i.formatteur[0].image" alt="Generic placeholder image" height="32">
+                <div class="w-100">
+                    <div class="dropdown float-end text-muted">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-dots-horizontal"></i>
+                        </a>
+                    </div>
+                    <h5 class="m-0"> {{i.formatteur[0].name }}  {{i.formatteur[0].lastname }}</h5>
+                    <h4 style="color: brown;">Titre de la question : {{i.title}} </h4>
+                    
+                </div>
+            </div>
+
+            <hr class="m-0" />
+
+            <div class="font-16 text-center text-dark my-3">
+                <i class="mdi mdi-format font-20"></i> {{i.description}}
+            </div>
+
+            <hr class="m-0" />
+            
+
+
+            <hr class="m-0" />
+            <h4 style="color: black;">Reponses</h4>
+
+            <div class="mt-3">
+               <ng-container *ngIf="i.Reponse.length>0 && i.Reponse[0].formatteur.length>0">
+                <div class="d-flex" *ngFor="let rep of i.Reponse">
+                    <img class="me-2 rounded" [src]=" endpoint.url + 'getimage/' + rep.formatteur[0].image" alt="Generic placeholder image" height="32">
+                    <div>
+                        <h5 class="m-0">{{rep.formatteur[0].name}} {{rep.formatteur[0].lastname}}</h5>
+                       
+
+                        <p class="my-1">{{rep.description}}</p>
+
+        
+
+                    </div> <!-- end div -->
+                </div>
+               </ng-container> <!-- end d-flex-->
+
+                <hr/>
+
+                <div class="d-flex mb-2">
+                    <img src="assets/images/users/avatar-1.jpg" height="32" class="align-self-start rounded me-2" alt="Arya Stark" />
+                    <div class="w-100">
+                        <input [(ngModel)]="Reponsenew.description" [ngModelOptions]="{standalone: true}"  type="text" class="form-control border-0 form-control-sm" placeholder="Ecrire un commentaire">
+                        <button style="margin-left: 800px;" (click)="ajouterreponse(i._id)"  type="submit" class="btn btn-sm btn-danger"><i
+                            class='uil uil-message me-1'></i>Repondre</button>
+                    </div> <!-- end w-100 -->
+                </div> <!-- end d-flex -->
+
+            </div>
+        </div> <!-- end card-body -->
+    </div>
+</div>
+<div style="margin-left: 500px;">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

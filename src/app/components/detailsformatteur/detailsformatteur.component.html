@@ -1,0 +1,68 @@
+<div class="card1">
+    <div class="card bg-secondary">
+        <div class="card-body profile-user-box">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar-lg">
+                                <img [src]=" endpoint.url + 'getimage/' + Formatteurdetails.image" alt=""
+                                    class="rounded-circle img-thumbnail">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h3 class="mt-1 mb-1 text-white"> nom : {{Formatteurdetails.name}} <br> prenom :{{Formatteurdetails.lastname}}</h3>
+                                <p class="font-13 text-white-50">role :  {{Formatteurdetails.role}}</p>
+
+                                <ul class="mb-0 list-inline text-light">
+                                    <li class="list-inline-item me-3">
+                                        <h4 class="mb-1">specialite</h4>
+                                        <p class="mb-0 font-13 text-white-50">{{Formatteurdetails.specialites}}</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h4 class="mb-1">Telephone</h4>
+                                        <p class="mb-0 font-13 text-white-50">{{Formatteurdetails.tel}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col-->
+
+                <div class="col-sm-4">
+                    <div class="text-center mt-sm-0 mt-3 text-sm-end">
+                        <button [routerLink]="['/admindashboard/modifierformatteur', Formatteurdetails._id]" type="button"
+                            class="btn btn-light">
+                            <i class="mdi mdi-account-edit me-1"></i> modifier le formateur </button>
+                        <br><br>
+                        <button (click)="delete(Formatteurdetails._id)" type="button" class="btn btn-danger">
+                            <i class="mdi mdi-account-edit me-1"></i> Supprimer le formateur </button>
+                    </div>
+                </div> <!-- end col-->
+            </div> <!-- end row -->
+
+        </div> <!-- end card-body/ profile-user-box-->
+    </div>
+</div>
+<div class="card15">
+    <p class="text-muted mb-2 font-20"><strong>Mon id :</strong><span class="ms-2"> {{Formatteurdetails._id}} </span></p>
+    <p class="text-muted mb-2 font-20"><strong>age :</strong><span class="ms-2"> {{Formatteurdetails.age}} </span></p>
+    <p class="text-muted mb-2 font-20"><strong>genre :</strong><span class="ms-2"> {{Formatteurdetails.genre}} </span></p>
+    <p class="text-muted mb-2 font-20"><strong>email :</strong><span class="ms-2"> {{Formatteurdetails.email}} </span></p>
+    <p>
+        <span>
+            <li class="list-inline-item">
+                <a href="{{Formatteurdetails.linkfacebook}}" class="social-list-item border-primary text-primary"><i
+                        class="mdi mdi-facebook"></i></a>
+            </li> &nbsp; &nbsp;
+            <li class="list-inline-item">
+                <a href="{{Formatteurdetails.linklinkedin}}" class="social-list-item border-primary text-primary"><i
+                        class="mdi mdi-linkedin"></i></a>
+            </li>
+        </span>
+
+
+    </p>
+
+</div>

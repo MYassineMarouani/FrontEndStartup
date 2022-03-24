@@ -1,0 +1,34 @@
+<div class="titre1">
+    <h1> modifier lemploi ayant l'ID <u> {{_id}} </u></h1>
+</div>
+<div class="formAB">
+    <form #modifieremploinewform="ngForm" (ngSubmit)="modifieremploi()" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom01">title</label>
+            <input [(ngModel)]="Emploinew.title" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom01" placeholder="title" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom02">description</label>
+            <input [(ngModel)]="Emploinew.description" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom02" placeholder="description" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom03">date&heure</label>
+            <input [(ngModel)]="Emploinew.date_heur" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom03" placeholder="date" required>
+        </div>
+        <label class="form-label" for="validationCustom04">Formation</label>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select [(ngModel)]="Emploinew.idFormation"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
+                <option selected>Choisir une Formation...</option>
+                <option *ngFor="let i of formation" [value]='i._id'>{{i.title}}</option>
+            </select>
+        </div>
+ 
+        <button (click)="modifieremploi(Emploinew)" class="btn btn-primary" type="submit">modifier lemploi
+            </button>
+    </form>
+
+</div>

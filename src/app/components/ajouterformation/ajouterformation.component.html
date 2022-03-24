@@ -1,0 +1,68 @@
+<div class="titre1">
+    <h1> Ajouter une formation</h1>
+</div>
+<div class="formAB">
+    <form #ajouterformationnewform="ngForm" (ngSubmit)="ajouterformation(ajouterformationnewform.value)" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom01">Titre</label>
+            <input required #title="ngModel" minlength="3" title="Formationnew.title" [(ngModel)]="Formationnew.title" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom01" placeholder="title" required>
+                <div *ngIf="title.touched && title.invalid" class="errors">
+                    <div *ngIf="title.errors.required" style="color: red;">Titre obligatoire </div>
+                    <div *ngIf="title.errors.minlength" style="color: red;">le Titre doit etre sup a 3 caracteres</div>
+                </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom02">description</label>
+            <input required #description="ngModel" minlength="6" title="Formationnew.description" [(ngModel)]="Formationnew.description" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom02" placeholder="description" required>
+                <div *ngIf="description.touched && description.invalid" class="errors">
+                    <div *ngIf="description.errors.required" style="color: red;">description obligatoire </div>
+                    <div *ngIf="description.errors.minlength" style="color: red;">la description doit etre sup a 6 caracteres</div>
+                </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom03">date</label>
+            <input type="datetime" [(ngModel)]="Formationnew.date" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom03" placeholder="date" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom04">Nombre d'heures</label>
+            <input [(ngModel)]="Formationnew.nbr_heur" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom04" placeholder="nombre d'heures" required>
+        </div>
+        <label class="form-label" for="validationCustom04">Formatteur</label>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select [(ngModel)]="Formationnew.formatteur"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
+                <option selected>Choisir un formatteur...</option>
+                <option *ngFor="let i of formatteur" [value]='i._id'>{{i.name}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="example-fileinput" class="form-label">Image</label>
+            <input (change)="select($event)" type="file" id="example-fileinput" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom06">Prix</label>
+            <input [(ngModel)]="Formationnew.prix" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom05" placeholder="Prix" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom07">Technologies</label>
+            <input [(ngModel)]="Formationnew.technologies" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="validationCustom05" placeholder="Technologies" required>
+        </div>
+        <div>
+            <label class="form-label" for="validationCustom07">Groupe d'etudiants participé </label>
+            <ng-multiselect-dropdown [placeholder]="'Choisir 1 ou plusieurs etudiants'" [settings]="dropdownSettings"
+                [data]='etudiant' [(ngModel)]="Formationnew.groupe" [ngModelOptions]="{standalone: true}" 
+            >
+            </ng-multiselect-dropdown>
+        </div>
+        <br> <br>
+        <button (click)="ajouterformation(Formationnew)" class="btn btn-primary" type="submit">Ajouter la
+            formation</button>
+    </form>
+
+</div>

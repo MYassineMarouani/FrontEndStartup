@@ -1,0 +1,91 @@
+<div class="titre2">
+    <h1 style="text-align: left;"> Liste de tous les formations</h1> 
+    <div class="c-grid" style="margin-top: -50px; text-align: right;">
+        <button [routerLink]="['/admindashboard/ajouterformation']" type="button" class="btn btn-primary">Nouveau</button>
+    </div>
+
+</div>
+<div class="tablo1">
+    <input type="text" placeholder="Recherche ..." (input)="filterItem($event.target.value)"
+    class="col-2 form-control form-control-sm" style="border-radius: 100px;border-color: gray;">
+
+ <br>
+    <table id="scroll-horizontal-datatable" class="table table-bordered border-primary table-centered mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th>identificateur</th>
+                <th>image</th>
+                <th>title</th>
+                <th>nbr_heures</th>
+                <th>formatteur</th>
+                <th>groupe</th>
+                <th>prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of formation | paginate: { itemsPerPage: 3, currentPage: p }">
+                <td>{{i._id}}</td>
+                <td>
+                    <img style="width: 50px;" [src]=" endpoint.url + 'getimage/' + i.image  " alt="">
+                </td>
+                <td>{{i.title}}</td>
+                <td>{{i.nbr_heur}}</td>
+                <td>{{i.formatteur[0].name }}</td>
+                <td> <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Groupe d'etudiants participé
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a *ngFor="let k of i.groupe" class="dropdown-item" href="#" >{{k.name}}</a>
+                    </div>
+                </div> </td>
+                <td>{{i.prix}}</td>
+                <td>
+                    <a (click)="delete(i._id)" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    <a [routerLink]="['/admindashboard/modifierformation', i._id]" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                    <a (click)="selectedItem = i" data-bs-toggle="modal" data-bs-target="#standard-modal" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                    <div *ngIf="selectedItem" id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="standard-modalLabel">Details de la formation {{selectedItem.title}}</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img style="width: 400px;height: 200px;" [src]=" endpoint.url + 'getimage/' + selectedItem.image  " alt=""> <br>
+                                    <div style="font-size: medium;font: bold;">
+                                        Titre : {{selectedItem.title}} <br>
+                                        Description : {{selectedItem.description}} <br>
+                                        Prix : {{selectedItem.prix}} <br>
+                                        Formatteur : {{selectedItem.formatteur}} <br>
+                                        technologies : {{selectedItem.technologies}} <br>
+                                        date : {{selectedItem.date}} <br>
+                                        nombre d'heures : {{selectedItem.nbr_heur}}
+                                    </div>
+
+                                    <td> <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Groupe d'etudiants participé
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a *ngFor="let k of selectedItem.groupe"  class="dropdown-item" href="#" >{{k.name}}</a>
+                                        </div>
+                                    </div> </td>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                    
+                </td>
+
+            </tr>
+
+
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,55 @@
+<div class="titre2">
+    <h1 style="text-align: left;"> Liste de tous les formatteurs</h1>
+    <div class="c-grid" style="margin-top: -50px; text-align: right;">
+        <button [routerLink]="['/admindashboard/ajouterformatteur']" type="button" class="btn btn-primary">Nouveau</button>
+    </div>
+
+</div>
+<div class="tablo1">
+    <input type="text" placeholder="Recherche ..." (input)="filterItem($event.target.value)"
+    class="col-2 form-control form-control-sm" style="border-radius: 100px;border-color: gray;">
+
+ <br>
+    <table class="table table-bordered border-primary table-centered mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th>identificateur</th>
+                <th>image</th>
+                <th>Name</th>
+                <th>Age</th>
+
+
+
+                <th>email</th>
+                <th>tel</th>
+
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of formateurs | paginate: { itemsPerPage: 3, currentPage: p }">
+                <td>{{i._id}}</td>
+                <td>
+                    <img style="width: 50px;" [src]=" endpoint.url + 'getimage/' + i.image  " alt="">
+                </td>
+                <td>{{i.name}}</td>
+                <td> {{i.age}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.tel}}</td>
+                <td>
+                    <a (click)="delete(i._id)" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    <a [routerLink]="['/admindashboard/modifierformatteur', i._id]" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                        <a [routerLink]="['/admindashboard/detailsformatteur', i._id]" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                </td>
+
+            </tr>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+        </tbody>
+    </table>
+
+
+</div>
