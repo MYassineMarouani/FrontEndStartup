@@ -1,0 +1,51 @@
+<h3>Les comptes rendus recu</h3>
+<br>
+
+<div class="row align-items-center" *ngFor="let i of travailpourformatteur">
+    <div class="col-auto">
+        <div class="avatar-sm">
+            <span class="avatar-title bg-light text-secondary rounded">
+                <i class="mdi mdi-folder-zip font-16"></i>
+            </span>
+        </div>
+    </div>
+    <div class="col ps-0">
+        <a href="javascript:void(0);" class="text-muted fw-bold font-16">{{i.description}}</a>
+
+
+
+        <button style="position: relative;left: 400px;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#primary-header-modal">Verifier et ajouter des remarques</button>
+        <div id="primary-header-modal" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="primary-header-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-colored-header bg-primary">
+                        <h4 class="modal-title" id="primary-header-modalLabel">Verifier et ajouter des remarques</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="example-textarea" class="form-label">Remarques : </label>
+                            <textarea  [(ngModel)]="Travailmaisonnew.remarques" [ngModelOptions]="{standalone: true}"
+                                class="form-control" id="example-textarea" rows="5"></textarea>
+                        </div>
+                        Etat :
+                        <br>
+                        <input type="radio" value="Verifé" required [(ngModel)]="Travailmaisonnew.etat"> Verifié
+                        <br>
+                        <input type="radio" value="Pas Verifé" required [(ngModel)]="Travailmaisonnew.etat">Pas verifié
+
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="ajouterremarques(i._id)" type="button"
+                            class="btn btn-primary">Appliquer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <p class="mb-0 font-13">{{i.etudiant[0].name}} {{i.etudiant[0].lastname}}</p>
+    </div>
+    <br>
+    <br><br>
+</div>

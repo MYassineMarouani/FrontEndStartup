@@ -5,23 +5,14 @@ import { EndpointService } from './endpoint.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class UserService {
 
   constructor(private http: HttpClient , private endpoint: EndpointService) { }
-  login(admin:any) {
-    return this.http.post(this.endpoint.url + 'Admin/login',admin)
-  }
-  loggedin() {
-    return !!localStorage.getItem('token')
-  }
-  getUserData(){
+  getuserData(){
 
     let token = localStorage.getItem('token');
 
     return JSON.parse(window.atob( token.split('.')[1] ))
 
-  }
-  getbyid(id: any){
-    return this.http.get(this.endpoint.url + 'Admin/getbyid/'+ id);
   }
 }

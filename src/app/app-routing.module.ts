@@ -5,10 +5,14 @@ import { AjouteremploiComponent } from './components/ajouteremploi/ajouteremploi
 import { AjouteretudiantComponent } from './components/ajouteretudiant/ajouteretudiant.component';
 import { AjouterformationComponent } from './components/ajouterformation/ajouterformation.component';
 import { AjouterformatteurComponent } from './components/ajouterformatteur/ajouterformatteur.component';
+import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertravail.component';
+import { DepotetudiantComponent } from './components/depotetudiant/depotetudiant.component';
+import { DepotformatteurComponent } from './components/depotformatteur/depotformatteur.component';
 import { DetailsetudiantComponent } from './components/detailsetudiant/detailsetudiant.component';
 import { DetailsformationComponent } from './components/detailsformation/detailsformation.component';
 import { DetailsformatteurComponent } from './components/detailsformatteur/detailsformatteur.component';
 import { EtudiantdashboardComponent } from './components/etudiantdashboard/etudiantdashboard.component';
+import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
 import { FormatteurdashboardComponent } from './components/formatteurdashboard/formatteurdashboard.component';
 import { LoginsignupComponent } from './components/loginsignup/loginsignup.component';
 import { ModifieremploiComponent } from './components/modifieremploi/modifieremploi.component';
@@ -18,8 +22,10 @@ import { ModifierformatteurComponent } from './components/modifierformatteur/mod
 import { QuestionsetreponsesComponent } from './components/questionsetreponses/questionsetreponses.component';
 import { TouslesemploisComponent } from './components/touslesemplois/touslesemplois.component';
 import { TouslesetudiantsComponent } from './components/touslesetudiants/touslesetudiants.component';
+import { TouslesfeedbacksComponent } from './components/touslesfeedbacks/touslesfeedbacks.component';
 import { TouslesformationsComponent } from './components/touslesformations/touslesformations.component';
 import { TouslesformatteursComponent } from './components/touslesformatteurs/touslesformatteurs.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { AdminonlyGuard } from './guards/adminonly.guard';
 import { EtudiantonlyGuard } from './guards/etudiantonly.guard';
 import { FormatteuronlyGuard } from './guards/formatteuronly.guard';
@@ -30,10 +36,14 @@ const routes: Routes = [
   {path:'login',component:LoginsignupComponent},
   {path:'formatteurdashboard',canActivate:[FormatteuronlyGuard],component:FormatteurdashboardComponent,children: [
     {path:'questionsetreponses',component:QuestionsetreponsesComponent},
+    {path:'depotformatteur',component:DepotformatteurComponent},
     // ici le autre children
   ]},
   {path:'etudiantdashboard',canActivate:[EtudiantonlyGuard],component:EtudiantdashboardComponent,children:[
     {path:'questionsetreponses',component:QuestionsetreponsesComponent},
+    {path:'feedbacks',component:FeedbacksComponent},
+    {path:'depotetudiant',component:DepotetudiantComponent},
+    {path:'ajoutertravail',component:AjoutertravailComponent},
     // ici le autre children
   ]},
   {path:'admindashboard', canActivate:[AdminonlyGuard],component:AdmindashboardComponent, children : [
@@ -52,8 +62,10 @@ const routes: Routes = [
     {path:'modifierformation/:_id',component:ModifierformationComponent},
     {path:'detailsformation/:_id',component:DetailsformationComponent},
     {path:'modifieremploi/:_id',component:ModifieremploiComponent},
+    {path:'touslesfeedbacks',component:TouslesfeedbacksComponent},
     // ici le autre children
   ]},
+  {path:'unauthorized',component:UnauthorizedComponent},
 ];
 
 @NgModule({

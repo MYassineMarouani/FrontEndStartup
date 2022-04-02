@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./loginsignup.component.css']
 })
 export class LoginsignupComponent implements OnInit {
+  userdata: any;
+  idconnected: any;
   constructor(private Formatteur:FormateurService,private Admin: AdminService, private router: Router, private Etudiant: EtudiantService,) { }
   xdata = {
     email: '',
@@ -20,7 +22,7 @@ export class LoginsignupComponent implements OnInit {
   ngOnInit() {
   }
   token: any;
-  loginadmin() {
+  login() {
     this.Admin.login(this.xdata).subscribe(
 
       res => {
@@ -28,7 +30,17 @@ export class LoginsignupComponent implements OnInit {
         this.token = res;
         localStorage.setItem('token', this.token.token);
         console.log(this.token)
-        this.router.navigate(['/admindashboard']);
+        this.userdata=this.Admin.getUserData().subject.role;
+        this.idconnected=this.Admin.getUserData().subject.id;
+        console.log(this.userdata)
+        console.log(this.idconnected)
+        if (this.userdata==2) {
+          this.router.navigate(['/formatteurdashboard']);
+        } else if (this.userdata==3) {
+          this.router.navigate(['/etudiantdashboard']);
+        } else {
+          this.router.navigate(['/admindashboard']);
+        }
       },
       err => {
         Swal.fire(err.error.text)
@@ -37,6 +49,8 @@ export class LoginsignupComponent implements OnInit {
       }
 
     );
+  
+  
 
   }
   loginetudiant() {

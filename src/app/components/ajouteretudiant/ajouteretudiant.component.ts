@@ -26,6 +26,7 @@ export class AjouteretudiantComponent implements OnInit {
   }
 
   ajouteretudiant() {
+    this.Etudiantnew.role=3
 
     let fd = new FormData();
     fd.append('image', this.file);
@@ -61,8 +62,19 @@ export class AjouteretudiantComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Etudiant.register(fd).subscribe((data) => { console.log("here is the student", data) });
-        this.router.navigate(['/admindashboard/touslesetudiants']);
+        this.Etudiant.register(fd).subscribe(
+          (data) => { console.log("here is the student", data) },
+          err=>{
+            console.log(err);
+            swalWithBootstrapButtons.fire(
+              'Email exist!',
+              'utiliser un autre email.',
+              'warning'
+            )
+          }
+          
+          );
+        // this.router.navigate(['/admindashboard/touslesetudiants']);
         swalWithBootstrapButtons.fire(
           'Ajouté!',
           'letudiant a été ajouté avec success.',

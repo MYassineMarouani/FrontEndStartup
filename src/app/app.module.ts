@@ -38,6 +38,12 @@ import { FormatteurheaderComponent } from './components/formatteurheader/formatt
 import { QuestionsetreponsesComponent } from './components/questionsetreponses/questionsetreponses.component';
 import { EtudiantsidebarComponent } from './components/etudiantsidebar/etudiantsidebar.component';
 import { EtudiantheaderComponent } from './components/etudiantheader/etudiantheader.component';
+import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
+import { TouslesfeedbacksComponent } from './components/touslesfeedbacks/touslesfeedbacks.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { DepotetudiantComponent } from './components/depotetudiant/depotetudiant.component';
+import { DepotformatteurComponent } from './components/depotformatteur/depotformatteur.component';
+import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertravail.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,13 @@ import { EtudiantheaderComponent } from './components/etudiantheader/etudianthea
     FormatteurheaderComponent,
     QuestionsetreponsesComponent,
     EtudiantsidebarComponent,
-    EtudiantheaderComponent
+    EtudiantheaderComponent,
+    FeedbacksComponent,
+    TouslesfeedbacksComponent,
+    UnauthorizedComponent,
+    DepotetudiantComponent,
+    DepotformatteurComponent,
+    AjoutertravailComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

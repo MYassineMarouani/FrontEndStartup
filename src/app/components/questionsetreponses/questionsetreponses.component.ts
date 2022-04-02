@@ -98,7 +98,7 @@ export class QuestionsetreponsesComponent implements OnInit {
     // console.log(idQuestion)
     // console.log(fd)
     this.items = [ 
-      {idUser:this.Formatteurdetails._id , description:this.Reponsenew.description  , idQuestion:idQuestion}
+      {idUser:this.id , description:this.Reponsenew.description  , idQuestion:idQuestion}
     ];
     console.log(this.items[0])
  

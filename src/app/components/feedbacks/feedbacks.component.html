@@ -1,0 +1,29 @@
+<h3> Ajouter un feedback a une formation</h3>
+<br>
+<br>
+
+<form #myForm="ngForm">
+
+    <label for="simpleinput" class="form-label">Choisir la formation : </label>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        <select [(ngModel)]="Feedbacknew.idFormation"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
+            <option *ngFor="let i of formation" [value]='i._id'>{{i.title}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="example-textarea" class="form-label">Description de votre feedback</label>
+        <textarea [(ngModel)]="Feedbacknew.description"  [ngModelOptions]="{standalone: true}" class="form-control" id="example-textarea" rows="5"></textarea>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="invalidCheck" required>
+            <label class="form-check-label form-label" for="invalidCheck">Confirmer que vous souhaitez ajouter ce feedback</label>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+        </div>
+    </div>
+    <button (click)="ajouterfeedback()" class="btn btn-primary" type="submit">Ajouter Feedback</button>
+
+</form>

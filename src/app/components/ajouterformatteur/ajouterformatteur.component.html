@@ -97,15 +97,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="validationCustom11">Role</label>
-            <input required #role="ngModel" [pattern]="rolePattern" role="Formatteurnew.role" [(ngModel)]="Formatteurnew.role" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
-                id="validationCustom05" placeholder="Role" required>
-                <div *ngIf="role.touched && role.invalid" class="errors">
-                    <div *ngIf="role.errors.required" style="color: red;">role obligatoire </div>
-                    <div *ngIf="role.errors.pattern" style="color: red;"> Le role doit etre entre 1 et 3 </div> 
-                </div>
+            <input readonly value="2" required #role="ngModel" [pattern]="rolePattern" role="Formatteurnew.role" [(ngModel)]="Formatteurnew.role" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                id="validationCustom05" placeholder="2" required>
         </div>
         <button [disabled]="name.invalid ||  lastname.invalid || genre.invalid || age.invalid || specialites.invalid
-        || email.invalid || tel.invalid || password.invalid || role.invalid" (click)="ajouterformatteur(Formatteurnew)"
+        || email.invalid || tel.invalid || password.invalid" (click)="ajouterformatteur(Formatteurnew)"
             class="btn btn-primary" type="submit">Ajouter le formatteur</button>
     </form>
 

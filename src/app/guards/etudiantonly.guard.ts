@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Route, Router } from '@angular/router';
+import { AdminService } from '../services/admin.service';
 import { EtudiantService } from '../services/etudiant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtudiantonlyGuard implements CanActivate  {
+  userrole: any;
   
-  constructor(private Etudiant:EtudiantService,private router:Router ,) {}
+  constructor(private Admin:AdminService,private Etudiant:EtudiantService,private router:Router ,) {}
   canActivate():boolean {
-    if (this.Etudiant.loggedin()) {
+    this.userrole=this.Admin.getUserData().subject.role;
+    if (this.Admin.loggedin() && this.userrole==3) {
       return true 
     } else {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/unauthorized'])
       return false
     }
   }

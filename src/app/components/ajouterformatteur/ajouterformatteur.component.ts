@@ -24,6 +24,7 @@ export class AjouterformatteurComponent implements OnInit {
     this.file= e.target.files[0];
   }
   ajouterformatteur() {
+    this.Formatteurnew.role=2
   
     let fd = new FormData();
     fd.append('image', this.file);

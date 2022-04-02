@@ -1,0 +1,23 @@
+<h4> Deposer un travail pour un formatteur</h4>
+<form #myForm="ngForm">
+
+    <label for="simpleinput" class="form-label">Choisir le formatteur concerné : </label>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        <select [(ngModel)]="Travailmaisonnew.idFormatteur"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
+            <option *ngFor="let i of formatteur" [value]='i._id'>{{i.name}} {{i.lastname}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="example-text" class="form-label">Description de votre travail</label>
+        <input type="text" [(ngModel)]="Travailmaisonnew.description"  [ngModelOptions]="{standalone: true}" class="form-control" id="example-textarea" rows="5">
+    </div>
+    <div class="mb-3">
+        <label for="example-fileinput" class="form-label">Fichier</label>
+        <input (change)="select($event)" [(ngModel)]="Travailmaisonnew.file"  [ngModelOptions]="{standalone: true}" type="file" id="example-fileinput" class="form-control">
+    </div>
+    
+
+    <button (click)="ajoutertravail()" class="btn btn-warning" type="submit">Deposer le Travail</button>
+
+</form>
