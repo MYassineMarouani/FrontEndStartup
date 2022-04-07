@@ -14,9 +14,14 @@
                 class="form-control" id="validationCustom02" placeholder="description" required>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="validationCustom03">date&heure</label>
-            <input [(ngModel)]="Emploinew.date_heur" [ngModelOptions]="{standalone: true}" type="text"
-                class="form-control" id="validationCustom03" placeholder="date" required>
+            <label class="form-label" for="validationCustom03">date&heure debut</label>
+            <input [(ngModel)]="Emploinew.date_debut" [ngModelOptions]="{standalone: true}" type="datetime-local"
+                class="form-control" id="validationCustom03" placeholder="date&heure debut" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="validationCustom03">date&heure fin</label>
+            <input [(ngModel)]="Emploinew.date_fin" [ngModelOptions]="{standalone: true}" type="datetime-local"
+                class="form-control" id="validationCustom03" placeholder="date&heure fin" required>
         </div>
         <label class="form-label" for="validationCustom04">Formation</label>
         <div class="input-group mb-3">

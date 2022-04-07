@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +47,13 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { DepotetudiantComponent } from './components/depotetudiant/depotetudiant.component';
 import { DepotformatteurComponent } from './components/depotformatteur/depotformatteur.component';
 import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertravail.component';
+import { FormatteurcalendrierComponent } from './components/formatteurcalendrier/formatteurcalendrier.component';
+import { EtudiantcalendrierComponent } from './components/etudiantcalendrier/etudiantcalendrier.component';
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -80,7 +90,9 @@ import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertrav
     UnauthorizedComponent,
     DepotetudiantComponent,
     DepotformatteurComponent,
-    AjoutertravailComponent
+    AjoutertravailComponent,
+    FormatteurcalendrierComponent,
+    EtudiantcalendrierComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -91,6 +103,7 @@ import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertrav
     ReactiveFormsModule,
     RouterModule,
     NgxPaginationModule,
+    FullCalendarModule,
   ],
   providers: [AdminonlyGuard,FormatteuronlyGuard,EtudiantonlyGuard],
   bootstrap: [AppComponent]

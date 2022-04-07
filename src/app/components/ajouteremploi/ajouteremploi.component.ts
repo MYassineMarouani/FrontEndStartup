@@ -35,7 +35,8 @@ export class AjouteremploiComponent implements OnInit {
     console.log(this.Emploinew)
     fd.append('title', this.Emploinew.title);
     fd.append('description', this.Emploinew.description);
-    fd.append('date_heur', this.Emploinew.date_heur);
+    fd.append('date_debut', this.Emploinew.date_debut);
+    fd.append('date_fin', this.Emploinew.date_fin);
     fd.append('idFormation', this.Emploinew.idFormation);
 
 

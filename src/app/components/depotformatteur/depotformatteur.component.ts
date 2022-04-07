@@ -12,6 +12,7 @@ export class DepotformatteurComponent implements OnInit {
   respone: any;
   travailpourformatteur: any;
   Travailmaisonnew: any = {};
+  depotinfo: any;
 
   constructor(private Formatteur:FormateurService,private travailmaison:TravailmaisonService,) { }
 
@@ -30,6 +31,16 @@ export class DepotformatteurComponent implements OnInit {
     fd.append('remarques' , this.Travailmaisonnew.remarques);
     this.travailmaison.update(idtravail, fd).subscribe((data) => { console.log("here is the travail", data) });
 
+
+  }
+  verifierdepot(iddepot : any) {
+    this.travailmaison.getbyid(iddepot).subscribe(
+      res=>{
+        this.respone = res
+        this.Travailmaisonnew = this.respone;
+      }
+    );
+    console.log(this.depotinfo)
 
   }
 

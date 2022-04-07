@@ -23,6 +23,9 @@ export class TravailmaisonService {
     return this.http.put(this.endpoint.url + 'Travailmaison/update/' + id, Travailmaisonnew);
 
   }
+  getbyid(id: any){
+    return this.http.get(this.endpoint.url + 'Travailmaison/getbyid/'+ id);
+  }
   // get by id formatteur
   getbyidformatteur(idFormatteur: any) {
     return this.http.get(this.endpoint.url + 'Travailmaison/getbyidformatteur/' + idFormatteur);

@@ -11,8 +11,10 @@ import { DepotformatteurComponent } from './components/depotformatteur/depotform
 import { DetailsetudiantComponent } from './components/detailsetudiant/detailsetudiant.component';
 import { DetailsformationComponent } from './components/detailsformation/detailsformation.component';
 import { DetailsformatteurComponent } from './components/detailsformatteur/detailsformatteur.component';
+import { EtudiantcalendrierComponent } from './components/etudiantcalendrier/etudiantcalendrier.component';
 import { EtudiantdashboardComponent } from './components/etudiantdashboard/etudiantdashboard.component';
 import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
+import { FormatteurcalendrierComponent } from './components/formatteurcalendrier/formatteurcalendrier.component';
 import { FormatteurdashboardComponent } from './components/formatteurdashboard/formatteurdashboard.component';
 import { LoginsignupComponent } from './components/loginsignup/loginsignup.component';
 import { ModifieremploiComponent } from './components/modifieremploi/modifieremploi.component';
@@ -37,6 +39,7 @@ const routes: Routes = [
   {path:'formatteurdashboard',canActivate:[FormatteuronlyGuard],component:FormatteurdashboardComponent,children: [
     {path:'questionsetreponses',component:QuestionsetreponsesComponent},
     {path:'depotformatteur',component:DepotformatteurComponent},
+    {path:'',component:FormatteurcalendrierComponent},
     // ici le autre children
   ]},
   {path:'etudiantdashboard',canActivate:[EtudiantonlyGuard],component:EtudiantdashboardComponent,children:[
@@ -44,6 +47,7 @@ const routes: Routes = [
     {path:'feedbacks',component:FeedbacksComponent},
     {path:'depotetudiant',component:DepotetudiantComponent},
     {path:'ajoutertravail',component:AjoutertravailComponent},
+    {path:'',component:EtudiantcalendrierComponent},
     // ici le autre children
   ]},
   {path:'admindashboard', canActivate:[AdminonlyGuard],component:AdmindashboardComponent, children : [
