@@ -1,13 +1,23 @@
-<h4> Deposer un travail pour un formatteur</h4>
+<h4> Deposer un travail</h4>
 <form #myForm="ngForm">
 
     <label for="simpleinput" class="form-label">Choisir le formatteur concerné : </label>
     <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">Options</label>
         <select [(ngModel)]="Travailmaisonnew.idFormatteur"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
-            <option *ngFor="let i of formatteur" [value]='i._id'>{{i.name}} {{i.lastname}}</option>
+            <option (click)="getMyFormation(i._id)" *ngFor="let i of formatteur" [value]='i._id'>{{i.name}} {{i.lastname}}</option>
         </select>
     </div>
+    <ng-container *ngIf="formation">
+        <label for="simpleinput" class="form-label">Choisir la formation concerné : </label>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select [(ngModel)]="Travailmaisonnew.idFormation"  [ngModelOptions]="{standalone: true}" class="form-select" id="inputGroupSelect01">
+                <option *ngFor="let i of formation" [value]='i._id'>{{i.title}} </option>
+            </select>
+        </div>
+    </ng-container>
+
     <div class="mb-3">
         <label for="example-text" class="form-label">Description de votre travail</label>
         <input type="text" [(ngModel)]="Travailmaisonnew.description"  [ngModelOptions]="{standalone: true}" class="form-control" id="example-textarea" rows="5">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { EmploiService } from 'src/app/services/emploi.service';
+import { EtudiantService } from 'src/app/services/etudiant.service';
 
 @Component({
   selector: 'app-etudiantcalendrier',
@@ -27,27 +28,30 @@ export class EtudiantcalendrierComponent implements OnInit {
     
   };
   emplois: any;
+  etudiantdata: any;
 
 
 
-  constructor(private Emploi:EmploiService,) { }
+  constructor(private Etudiant:EtudiantService,private Emploi:EmploiService,) { }
 
   ngOnInit() {
+    this.etudiantdata=this.Etudiant.getetudiantData().subject;
 
     
-      this.Emploi.getall().subscribe(
+      this.Emploi.getmyemploi(this.etudiantdata.id).subscribe(
         res => {
           this.emplois=res;
+          console.log(this.emplois)
 
           for(let i=0; i < this.emplois.length; i++){
-            this.emplois[i].color = { primary:"#000000" }
+            this.Events.push({ title: this.emplois[i].title, start: this.emplois[i].date_debut, end: this.emplois[i].date_fin , display: 'color'})
 
           }
 
           this.calendarOptions = {
             initialView: 'dayGridMonth',
           
-            events: this.emplois,
+            events: this.Events,
           };
         },
         err => {

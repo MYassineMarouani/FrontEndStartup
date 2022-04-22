@@ -11,6 +11,12 @@ export class EmploiService {
   add(Emploinew) {
     return this.http.post(this.endpoint.url + 'Emploi/add',Emploinew)
   }
+  getmyemploi (id) {
+    return this.http.get(this.endpoint.url+ 'Emploi/getmyemplois/'+id);
+  }
+  getmyemploiformatteur (id) {
+    return this.http.get(this.endpoint.url+ 'Emploi/getfemplois/'+id);
+  }
   getall(){
     return this.http.get(this.endpoint.url + 'Emploi/getall');
   }

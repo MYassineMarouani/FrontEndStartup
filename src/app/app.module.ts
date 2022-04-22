@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import { ChartsModule } from 'ng2-charts';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +52,8 @@ import { DepotformatteurComponent } from './components/depotformatteur/depotform
 import { AjoutertravailComponent } from './components/ajoutertravail/ajoutertravail.component';
 import { FormatteurcalendrierComponent } from './components/formatteurcalendrier/formatteurcalendrier.component';
 import { EtudiantcalendrierComponent } from './components/etudiantcalendrier/etudiantcalendrier.component';
+import { StatistiquesComponent } from './components/statistiques/statistiques.component';
+import { FooterComponent } from './components/footer/footer.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -92,7 +97,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DepotformatteurComponent,
     AjoutertravailComponent,
     FormatteurcalendrierComponent,
-    EtudiantcalendrierComponent
+    EtudiantcalendrierComponent,
+    StatistiquesComponent,
+    FooterComponent,
+    
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -104,6 +112,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RouterModule,
     NgxPaginationModule,
     FullCalendarModule,
+    ChartsModule,
   ],
   providers: [AdminonlyGuard,FormatteuronlyGuard,EtudiantonlyGuard],
   bootstrap: [AppComponent]

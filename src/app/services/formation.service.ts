@@ -11,6 +11,10 @@ export class FormationService {
   add(Formationnew) {
     return this.http.post(this.endpoint.url + 'Formation/add',Formationnew)
   }
+  getformationsbyidformatteur (id) {
+    return this.http.get(this.endpoint.url+'Formation/getformationsbyidformatteur/'+id);
+
+  }
   getall(){
     return this.http.get(this.endpoint.url + 'Formation/getall');
   }

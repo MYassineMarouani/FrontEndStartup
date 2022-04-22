@@ -22,6 +22,7 @@ import { ModifieretudiantComponent } from './components/modifieretudiant/modifie
 import { ModifierformationComponent } from './components/modifierformation/modifierformation.component';
 import { ModifierformatteurComponent } from './components/modifierformatteur/modifierformatteur.component';
 import { QuestionsetreponsesComponent } from './components/questionsetreponses/questionsetreponses.component';
+import { StatistiquesComponent } from './components/statistiques/statistiques.component';
 import { TouslesemploisComponent } from './components/touslesemplois/touslesemplois.component';
 import { TouslesetudiantsComponent } from './components/touslesetudiants/touslesetudiants.component';
 import { TouslesfeedbacksComponent } from './components/touslesfeedbacks/touslesfeedbacks.component';
@@ -67,6 +68,8 @@ const routes: Routes = [
     {path:'detailsformation/:_id',component:DetailsformationComponent},
     {path:'modifieremploi/:_id',component:ModifieremploiComponent},
     {path:'touslesfeedbacks',component:TouslesfeedbacksComponent},
+    {path:'',component:StatistiquesComponent},
+    {path:'statistiques',component:StatistiquesComponent},
     // ici le autre children
   ]},
   {path:'unauthorized',component:UnauthorizedComponent},

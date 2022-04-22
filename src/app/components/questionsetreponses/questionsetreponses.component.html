@@ -80,7 +80,7 @@
                <ng-container *ngIf="i.Reponse.length>0">
                 <div class="d-flex" *ngFor="let rep of i.Reponse">
                     <img *ngIf="rep.formatteur.length>0"  class="me-2 rounded"[src]=" endpoint.url + 'getimage/' + rep.formatteur[0].image" alt="Generic placeholder image" height="32">
-                    <img *ngIf="rep.etudiant.length>0"  class="me-2 rounded"[src]=" endpoint.url + 'getimage/' + rep.etudiant[0].image" alt="Generic placeholder image" height="32">
+                    <img *ngIf="rep.etudiant.length>0"  class="me-2 rounded"[src]=" endpoint.url + 'getimage/' + rep.etudiant[0].image" alt="Generic placeholder image" width="32" height="32">
                     
                     <div>
                         <h5 class="m-0" *ngIf="rep.formatteur.length>0"> {{rep.formatteur[0].name }}  {{rep.formatteur[0].lastname }}</h5>
